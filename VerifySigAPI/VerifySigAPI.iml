@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/testdata" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="1.8 defekt" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="moa-spss" level="project" />
     <orderEntry type="module-library" exported="">
