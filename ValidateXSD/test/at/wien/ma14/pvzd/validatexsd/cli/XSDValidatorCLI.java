@@ -5,7 +5,6 @@ import at.wien.ma14.pvzd.validatexsd.XSDValidator;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-
 public class XSDValidatorCLI {
 
     public void testVerifyGood(String xmldoc, String samlxsdDir) throws Exception {
@@ -23,7 +22,7 @@ public class XSDValidatorCLI {
     public static void main(String[] argv) throws Exception {
         System.out.println("XSDValidatorCLI (" + argv.length + ")");
         XSDValidatorCLI r = new XSDValidatorCLI();
-        String default_xsd_dir = "/Users/admin/devl/java/rhoerbe/PVZD/ValidateXSD/SAML_MD_Schema";
+        String default_xsd_dir = "/Users/admin/devl/java/rhoerbe/PVZDjava/ValidateXSD/SAML_MD_Schema";
         if (argv.length == 1) {
             System.out.println("Validating " + argv[0] + "against xsd in " + default_xsd_dir);
             r.testVerifyGood(argv[0], default_xsd_dir);

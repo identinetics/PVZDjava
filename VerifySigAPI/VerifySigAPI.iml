@@ -7,13 +7,14 @@
       <sourceFolder url="file://$MODULE_DIR$/testdata" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8 defekt" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="moa-spss" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MOASPSS_LIB$/moa-common.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/moa-spss-lib/moa-common.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -22,34 +23,34 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MOASPSS_LIB$/lib" />
+          <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MOASPSS_LIB$/lib" />
+          <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" />
         </SOURCES>
-        <jarDirectory url="file://$MOASPSS_LIB$/lib" recursive="false" />
-        <jarDirectory url="file://$MOASPSS_LIB$/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MOASPSS_LIB$/endorsed" />
+          <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/endorsed" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MOASPSS_LIB$/endorsed" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/endorsed" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MOASPSS_LIB$/ext" />
+          <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/ext" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MOASPSS_LIB$/ext" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/ext" recursive="false" />
       </library>
     </orderEntry>
   </component>

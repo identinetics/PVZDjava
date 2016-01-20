@@ -21,20 +21,17 @@
         <!-- This attribute indicates with an EntityDescriptor that it shall be deleted from the journal. -->
         <simpleType>
             <restriction base="string">
-                <pattern value="add_or_update|delete|revokecert"/>
+                <pattern value="add_or_update|delete"/>
             </restriction>
         </simpleType>
     </attribute>
 
-    <!-- unused - certificate revocation is submitted as JSON to PMP, not to PEP
-    <element name="CertificateRevocation" type="pvzd:CertificateRevocation" />
-    /* This attribute indicates with a KeyDescriptor
-         that the contained certificate shall be added to the revocation list. */
-    <complexType name="CertificateRevocation">
-        <sequence>
-            <element ref="md:KeyDescriptor" minOccurs="1" maxOccurs="1" />
-        </sequence>
-    </complexType>
-    -->
+    <attribute name="pvptype">
+        <simpleType>
+            <restriction base="string">
+                <pattern value="R-Profile|S-Profile|any"/>
+            </restriction>
+        </simpleType>
+    </attribute>
 
 </schema>

@@ -3,9 +3,15 @@ package at.wien.ma14.pvzd.validatexsd.unittest;
 import at.wien.ma14.pvzd.validatexsd.XSDValidator;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.jhades.JHades;
+
 
 public class XSDValidatorTests {
-//    public void XMLValidatorTest() {}
+
+    @Test
+    public void test00_checkClasspath() throws Exception {
+        new JHades().printClasspath();
+    }
 
     @Test
     public void test01_ValidateOK() throws Exception {
