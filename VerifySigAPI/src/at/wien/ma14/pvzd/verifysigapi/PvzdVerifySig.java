@@ -61,7 +61,7 @@ public class PvzdVerifySig {
                 sigInfo,
                 null,    // Keine Ergaenzungsobjekte
                 null,    // Signaturmanifest-Pruefung soll nicht durchgefuehrt werden
-                false,   // Hash-Inputdaten, d.h. tatsaechlich signierte Daten werden nicht zurueckgeliefert
+                true,   // Hash-Inputdaten, d.h. tatsaechlich signierte Daten werden nicht zurueckgeliefert
                 "MOAIDBuergerkarteAuthentisierungsDaten");
 
         // suppress stdout to get rid of distracting IAIK lib startup licence messages
@@ -83,23 +83,26 @@ public class PvzdVerifySig {
         try {
             verifyResponse = sigVerifyService.verifyXMLSignature(verifyRequest);
         } catch (MOAException e) {
-            return new PvzdVerifySigResponse(e.getMessageId(), e.getMessage(), null);
+            return new PvzdVerifySigResponse(e.getMessageId(), e.getMessage(), null, null);
         }
         SignerInfo signerInfo = verifyResponse.getSignerInfo();
         String signerCertificateEncoded = null;
         try {
             signerCertificateEncoded = Base64.getEncoder().encodeToString(signerInfo.getSignerCertificate().getEncoded());
         } catch (java.security.cert.CertificateEncodingException e) {
-            return new PvzdVerifySigResponse("NOK", "NOK", "Certificate encoding error");
+            return new PvzdVerifySigResponse("NOK", "NOK", "Certificate encoding error", null);
         }
         if (verifyResponse.getSignatureCheck().getCode() == 0 &&
                 verifyResponse.getCertificateCheck().getCode() == 0) {
-            return new PvzdVerifySigResponse("OK", "OK", signerCertificateEncoded);
+            return new PvzdVerifySigResponse("OK", "OK", signerCertificateEncoded,
+                                             verifyResponse.getReferenceInputDatas());
         } else {
             if (verifyResponse.getSignatureCheck().getCode() != 0) {
-                return new PvzdVerifySigResponse("NOK", "NOK: Signature Check returned code=" + verifyResponse.getSignatureCheck().getCode(), null);
+                return new PvzdVerifySigResponse("NOK", "NOK: Signature Check returned code=" +
+                                                 verifyResponse.getSignatureCheck().getCode(), null, null);
             } else {
-                return new PvzdVerifySigResponse("NOK", "NOK: Certificate Check returned code=" + verifyResponse.getCertificateCheck().getCode(), null);
+                return new PvzdVerifySigResponse("NOK", "NOK: Certificate Check returned code=" +
+                                                 verifyResponse.getCertificateCheck().getCode(), null, null);
             }
         }
     }

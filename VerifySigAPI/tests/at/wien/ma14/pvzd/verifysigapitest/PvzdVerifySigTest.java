@@ -15,18 +15,19 @@ import java.nio.file.Paths;
  * Created by r2h2 on 10.08.15.
  */
 public class PvzdVerifySigTest {
-    final File cwd = new File(System.getProperty("user.dir"));
-    final File projdir = new File(cwd.getParent());
+    final File projdir = new File(System.getProperty("user.dir"));
+    final File moddir = new File(projdir, "VerifySigAPI");
+    //final File parentdir = new File(projdir.getParent());
     final File log4jprop = new File(projdir, "conf/log4j_info.properties");
     final File moaspprop = new File(projdir, "conf/moa-spss/MOASPSSConfiguration.xml");
 
     @Test
     public void testVerifyGood() throws Exception {
-        final File xmlFileOK = new File("tests/testdata/idp5_valid.xml_sig.xml");
+        final File xmlFileOK = new File(moddir, "tests/testdata/idp5_valid.xml_sig.xml");
         assert xmlFileOK.exists() : "not found: " + xmlFileOK.getAbsolutePath();
-        final File signerCert = new File("tests/testdata/r2h2_ecard_qcert.b64");
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        final File signerCert = new File(moddir, "tests/testdata/r2h2_ecard_qcert.b64");
         System.out.println("Projdir: " + projdir);
+        System.out.println("Moddir: " + moddir);
 
         System.out.println("Checking if signature is OK and compare extracted signer certificate with reference copy");
         PvzdVerifySig verifier  = new PvzdVerifySig(moaspprop.getAbsolutePath(),

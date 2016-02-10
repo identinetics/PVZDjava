@@ -2,6 +2,8 @@ package at.wien.ma14.pvzd.validatexsd.cli;
 
 
 import at.wien.ma14.pvzd.validatexsd.XSDValidator;
+import org.jhades.JHades;
+
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -30,7 +32,8 @@ public class XSDValidatorCLI {
             System.out.println("Validating " + argv[0] + argv[1]);
             r.testVerifyGood(argv[0], argv[1]);
         } else {
-            System.out.println("wrong number of arguments.\n Usage: XSDValidatorCLI <file-to-be-validated> [schema-dir]");
+            System.out.println("Usage: XSDValidatorCLI <file-to-be-validated> [schema-dir]");
+            new JHades().printClasspath();
         }
     }
 

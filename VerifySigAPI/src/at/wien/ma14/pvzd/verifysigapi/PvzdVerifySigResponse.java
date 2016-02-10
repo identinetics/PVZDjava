@@ -1,5 +1,7 @@
 package at.wien.ma14.pvzd.verifysigapi;
 
+import java.util.List;
+
 /**
  * Datenstruktur mit dem hier relevanten Ergebnis der Siganturprüfung zur Übergabe an Python
  */
@@ -14,10 +16,12 @@ public class PvzdVerifySigResponse {
     public String pvzdCode;
     public String pvzdMessage;
     public String signerCertificateEncoded;
+    public List referencedata;
 
-    public PvzdVerifySigResponse(String c, String m, String cert) {
+    public PvzdVerifySigResponse(String c, String m, String cert, List ref_data) {
         pvzdCode = c;
         pvzdMessage = m;
         signerCertificateEncoded = cert;
+        referencedata = ref_data;
     }
 }
