@@ -16,9 +16,9 @@ public class PvzdVerifySigResponse {
     public String pvzdCode;
     public String pvzdMessage;
     public String signerCertificateEncoded;
-    public List referencedata;
+    public List<String> referencedata;
 
-    public PvzdVerifySigResponse(String c, String m, String cert, List ref_data) {
+    public PvzdVerifySigResponse(String c, String m, String cert, List<String> ref_data) {
         pvzdCode = c;
         pvzdMessage = m;
         signerCertificateEncoded = cert;
