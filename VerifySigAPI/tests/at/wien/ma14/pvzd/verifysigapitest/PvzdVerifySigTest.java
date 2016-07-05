@@ -8,8 +8,11 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-
+import at.gv.egovernment.moa.spss.api.impl.InputDataBinaryImpl;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by r2h2 on 10.08.15.
@@ -37,7 +40,42 @@ public class PvzdVerifySigTest {
         assertEquals("Expected OK for messageID", "OK", response.pvzdCode);
         String cert_b64 = new String(Files.readAllBytes(Paths.get(signerCert.getAbsolutePath())));
         assertEquals("Certificate mismatch", cert_b64, response.signerCertificateEncoded);
+        for (String s : response.referencedata) {
+            //InputDataBinaryImpl data = (InputDataBinaryImpl)response.referencedata;
+            //String s = "Signature data: " + getStringFromInputStream(data.getBinaryContent());
+            System.out.println("Signature data: " + s);
+        }
     }
+
+    /*private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }  */
+
 
     /*@Test
     public void testVerifySignatureValueBroken() throws Exception {
@@ -52,3 +90,4 @@ public class PvzdVerifySigTest {
         assertEquals("Expected 2203 (NOK )for messageID", "2203", response.pvzdCode);   *//* message codes undocumented *//*
     }*/
 }
+
