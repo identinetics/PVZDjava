@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# wrapper for XSDValidatorCLI
+# Usage: $0 <file-to-be-validated> [schema-dir]
+
 ostype=${OSTYPE//[0-9.]/}
 if [[ "$ostype" == "linux-gnu" ]]; then
     #  deployment env
@@ -24,6 +27,6 @@ else
     echo "no environment defined for $ostype"
     exit 1
 fi
-export CLASSPATH=$PROJ_HOME/bin/test/ValidateXSD:$PROJ_HOME/bin/production/ValidateXSD::$PROJ_HOME/lib/unittests/jhades-1.0.4.jar
+export CLASSPATH=$PROJ_HOME/bin/test/ValidateXSD:$PROJ_HOME/bin/artifacts/pvzdValidateXsd/pvzdValidateXsd.jar:$PROJ_HOME/lib/unittests/jhades-1.0.4.jar
 
 $JAVA_HOME/bin/java at.wien.ma14.pvzd.validatexsd.cli.XSDValidatorCLI $@

@@ -4,7 +4,7 @@ PVZD Java subproject
 ValidateXSD
 -----------
 
-ValidateXSD is a wrapper class for Xerces/J to vaidate an xml file against a
+ValidateXSD is a wrapper class for Xerces/J to validate an xml file against a
  set of XML Schema files
 
 VerifySigAPI
