@@ -147,4 +147,3 @@ public class PvzdVerifySig {
         return new PvzdVerifySigResponse("OK", "OK", signerCertificateEncoded, signedData_str);
     }
 }
-       // TODO: ((ByteArrayInputStream)((ContentBinaryImpl)((InputDataBinaryImpl)signedData.get(0)).wrapped_).binaryContent).buf
