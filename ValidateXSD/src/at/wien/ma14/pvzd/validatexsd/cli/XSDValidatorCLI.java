@@ -15,10 +15,10 @@ public class XSDValidatorCLI {
         for(URL url: urls){
             System.out.println(url.getFile());
         }
-
         //String cwd_parent = (new File(new File(".").getAbsolutePath())).getPare0nt();
         XSDValidator validator = new XSDValidator(samlxsdDir, true);
         validator.validateSchema(xmldoc);
+        System.out.println("done.");
     }
 
     public static void main(String[] argv) throws Exception {
