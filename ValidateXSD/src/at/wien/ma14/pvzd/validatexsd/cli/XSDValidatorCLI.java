@@ -36,7 +36,6 @@ public class XSDValidatorCLI {
             for(URL url: urls){
                 System.out.println(url.getFile());
             }
-
         }
     }
 
