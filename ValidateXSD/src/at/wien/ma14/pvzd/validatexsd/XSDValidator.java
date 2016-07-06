@@ -54,6 +54,7 @@ public class XSDValidator {
                 final Validator validator = schema.newValidator();
                 if (_verbose) out.println("Validating " + xmlFilePath + " against XSDs " + Arrays.toString(xsdFiles) + "...");
                 validator.validate(new StreamSource(new File(xmlFilePath)));
+                retmsg = "done.";
             } catch (IOException e) {
                 if (_verbose) out.println("ERROR: Unable to validate " + xmlFilePath + "\n" + e);
                 retmsg = "File to be validated not be opened: " + xmlFilePath;
