@@ -20,7 +20,6 @@ public class VerifySigCLI {
         File xmlFileOK = new File(xmldoc);
         assert xmlFileOK.exists() : "not found: " + xmlFileOK.getAbsolutePath();
         if (! log4jprop.exists()) {
-            System.out.println(" + );
             throw new FileNotFoundException(" need to start from PROJ_HOME (not found: " + xmlFileOK.getAbsolutePath() + ")");
         }
         PvzdVerifySig verifier  = new PvzdVerifySig(moaspprop.getAbsolutePath(),
