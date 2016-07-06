@@ -3,6 +3,7 @@ package at.wien.ma14.pvzd.verifysigapi.cli;
 import at.wien.ma14.pvzd.verifysigapi.PvzdVerifySig;
 import at.wien.ma14.pvzd.verifysigapi.PvzdVerifySigResponse;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -12,14 +13,16 @@ import org.jhades.JHades;
 
 public class VerifySigCLI {
     final File projdir = new File(System.getProperty("user.dir"));
-    final File moddir = new File(projdir, "VerifySigAPI");
-    //final File parentdir = new File(projdir.getParent());
     final File log4jprop = new File(projdir, "conf/log4j_info.properties");
     final File moaspprop = new File(projdir, "conf/moa-spss/MOASPSSConfiguration.xml");
 
     public void testVerifyGood(String xmldoc) throws Exception {
-        File xmlFileOK = new File(moddir, xmldoc);
+        File xmlFileOK = new File(xmldoc);
         assert xmlFileOK.exists() : "not found: " + xmlFileOK.getAbsolutePath();
+        if (! log4jprop.exists()) {
+            System.out.println(" + );
+            throw new FileNotFoundException(" need to start from PROJ_HOME (not found: " + xmlFileOK.getAbsolutePath() + ")");
+        }
         PvzdVerifySig verifier  = new PvzdVerifySig(moaspprop.getAbsolutePath(),
                 log4jprop.getAbsolutePath(),
                 xmlFileOK.getAbsolutePath());
