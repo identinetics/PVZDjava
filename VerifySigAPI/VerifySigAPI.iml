@@ -53,5 +53,14 @@
         <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/ext" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../lib/jhades-1.0.4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
