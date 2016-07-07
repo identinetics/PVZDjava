@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_conf" default="compile.module.conf">
+  <dirname property="module.conf.basedir" file="${ant.file.module_conf}"/>
+  
+  <property name="module.jdk.home.conf" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.conf" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.conf" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.conf" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="conf.output.dir" value="${module.conf.basedir}/../bin/production/conf"/>
+  <property name="conf.testoutput.dir" value="${module.conf.basedir}/../bin/test/conf"/>
+  
+  <path id="conf.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="conf.module.production.classpath">
+    <path refid="${module.jdk.classpath.conf}"/>
+  </path>
+  
+  <path id="conf.runtime.production.module.classpath">
+    <pathelement location="${conf.output.dir}"/>
+  </path>
+  
+  <path id="conf.module.classpath">
+    <path refid="${module.jdk.classpath.conf}"/>
+    <pathelement location="${conf.output.dir}"/>
+  </path>
+  
+  <path id="conf.runtime.module.classpath">
+    <pathelement location="${conf.testoutput.dir}"/>
+    <pathelement location="${conf.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.conf">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.conf">
+    <patternset refid="excluded.from.module.conf"/>
+  </patternset>
+  
+  
+  <target name="compile.module.conf" depends="compile.module.conf.production,compile.module.conf.tests" description="Compile module conf"/>
+  
+  <target name="compile.module.conf.production" depends="register.custom.compilers" description="Compile module conf; production classes"/>
+  
+  <target name="compile.module.conf.tests" depends="register.custom.compilers,compile.module.conf.production" description="compile module conf; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.conf" description="cleanup module">
+    <delete dir="${conf.output.dir}"/>
+    <delete dir="${conf.testoutput.dir}"/>
+  </target>
+</project>

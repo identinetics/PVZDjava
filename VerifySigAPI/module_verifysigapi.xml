@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_verifysigapi" default="compile.module.verifysigapi">
+  <dirname property="module.verifysigapi.basedir" file="${ant.file.module_verifysigapi}"/>
+  
+  <property name="module.jdk.home.verifysigapi" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.verifysigapi" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.verifysigapi" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.verifysigapi" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="verifysigapi.output.dir" value="${module.verifysigapi.basedir}/../bin/production/VerifySigAPI"/>
+  <property name="verifysigapi.testoutput.dir" value="${module.verifysigapi.basedir}/../bin/test/VerifySigAPI"/>
+  
+  <path id="verifysigapi.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="verifysigapi.module.production.classpath">
+    <path refid="${module.jdk.classpath.verifysigapi}"/>
+    <path refid="library.moa-spss.classpath"/>
+    <pathelement location="${path.variable.moaspss_lib}/moa-common.jar"/>
+    <pathelement location="${basedir}/lib/moa-spss-lib/moa-common.jar"/>
+    <fileset dir="${basedir}/lib/moa-spss-lib/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/endorsed">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/ext">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="verifysigapi.runtime.production.module.classpath">
+    <pathelement location="${verifysigapi.output.dir}"/>
+    <path refid="library.moa-spss.classpath"/>
+    <pathelement location="${path.variable.moaspss_lib}/moa-common.jar"/>
+    <pathelement location="${basedir}/lib/moa-spss-lib/moa-common.jar"/>
+    <fileset dir="${basedir}/lib/moa-spss-lib/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/endorsed">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/ext">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="verifysigapi.module.classpath">
+    <path refid="${module.jdk.classpath.verifysigapi}"/>
+    <pathelement location="${verifysigapi.output.dir}"/>
+    <path refid="library.moa-spss.classpath"/>
+    <pathelement location="${path.variable.moaspss_lib}/moa-common.jar"/>
+    <pathelement location="${basedir}/lib/moa-spss-lib/moa-common.jar"/>
+    <fileset dir="${basedir}/lib/moa-spss-lib/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/endorsed">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/ext">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="verifysigapi.runtime.module.classpath">
+    <pathelement location="${verifysigapi.testoutput.dir}"/>
+    <pathelement location="${verifysigapi.output.dir}"/>
+    <path refid="library.moa-spss.classpath"/>
+    <pathelement location="${path.variable.moaspss_lib}/moa-common.jar"/>
+    <pathelement location="${basedir}/lib/moa-spss-lib/moa-common.jar"/>
+    <fileset dir="${basedir}/lib/moa-spss-lib/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/endorsed">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/moa-spss-lib/ext">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.verifysigapi">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.verifysigapi">
+    <patternset refid="excluded.from.module.verifysigapi"/>
+  </patternset>
+  
+  <path id="verifysigapi.module.sourcepath">
+    <dirset dir="${module.verifysigapi.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="verifysigapi.module.test.sourcepath">
+    <dirset dir="${module.verifysigapi.basedir}">
+      <include name="tests"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.verifysigapi" depends="compile.module.verifysigapi.production,compile.module.verifysigapi.tests" description="Compile module VerifySigAPI"/>
+  
+  <target name="compile.module.verifysigapi.production" depends="register.custom.compilers" description="Compile module VerifySigAPI; production classes">
+    <mkdir dir="${verifysigapi.output.dir}"/>
+    <javac2 destdir="${verifysigapi.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.verifysigapi}/javac">
+      <compilerarg line="${compiler.args.verifysigapi}"/>
+      <bootclasspath refid="verifysigapi.module.bootclasspath"/>
+      <classpath refid="verifysigapi.module.production.classpath"/>
+      <src refid="verifysigapi.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.verifysigapi"/>
+    </javac2>
+    
+    <copy todir="${verifysigapi.output.dir}">
+      <fileset dir="${module.verifysigapi.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.verifysigapi.tests" depends="register.custom.compilers,compile.module.verifysigapi.production" description="compile module VerifySigAPI; test classes" unless="skip.tests">
+    <mkdir dir="${verifysigapi.testoutput.dir}"/>
+    <javac2 destdir="${verifysigapi.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.verifysigapi}/javac">
+      <compilerarg line="${compiler.args.verifysigapi}"/>
+      <bootclasspath refid="verifysigapi.module.bootclasspath"/>
+      <classpath refid="verifysigapi.module.classpath"/>
+      <src refid="verifysigapi.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.verifysigapi"/>
+    </javac2>
+    
+    <copy todir="${verifysigapi.testoutput.dir}">
+      <fileset dir="${module.verifysigapi.basedir}/tests">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.verifysigapi" description="cleanup module">
+    <delete dir="${verifysigapi.output.dir}"/>
+    <delete dir="${verifysigapi.testoutput.dir}"/>
+  </target>
+</project>

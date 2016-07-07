@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pvzdjava" default="all">
+  
+  
+  <property file="pvzdjava.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/charsets.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/deploy.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/cldrdata.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/dnsns.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/jaccess.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/jfxrt.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/localedata.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/nashorn.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/sunec.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/ext/zipfs.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/javaws.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/jce.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/jfr.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/jfxswt.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/jsse.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/management-agent.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/plugin.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/resources.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/jre/lib/rt.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/ant-javafx.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/dt.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/javafx-mx.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/jconsole.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/packager.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/sa-jdi.jar"/>
+      <include name="../../../jdk1.8.0.jdk/Contents/Home/lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.moa-spss.classpath">
+    <pathelement location="${basedir}/lib/moa-spss-lib-2.0.3/moa-spss.jar"/>
+    <pathelement location="${basedir}/lib/unittests/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/lib/unittests/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/unittests/hamcrest-library-1.3.jar"/>
+    <pathelement location="${basedir}/lib/unittests/junit-4.xx.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/conf/module_conf.xml"/>
+  
+  <import file="${basedir}/lib/module_lib.xml"/>
+  
+  <import file="${basedir}/ValidateXSD/module_validatexsd.xml"/>
+  
+  <import file="${basedir}/VerifySigAPI/module_verifysigapi.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.conf, clean.module.lib, clean.module.validatexsd, clean.module.verifysigapi" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.conf, compile.module.lib, compile.module.validatexsd, compile.module.verifysigapi" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.pvzdvalidatexsd" value="${basedir}/bin/artifacts/pvzdValidateXsd"/>
+    <property name="artifact.output.pvzdverifysig" value="${basedir}/bin/artifacts/pvzdVerifySig"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.pvzdValidateXsd.jar" value="${artifacts.temp.dir}/pvzdValidateXsd.jar"/>
+    <property name="temp.jar.path.pvzdVerifySig.jar" value="${artifacts.temp.dir}/pvzdVerifySig.jar"/>
+  </target>
+  
+  <target name="artifact.pvzdvalidatexsd" depends="init.artifacts, compile.module.validatexsd" description="Build &#39;pvzdValidateXsd&#39; artifact">
+    <property name="artifact.temp.output.pvzdvalidatexsd" value="${artifacts.temp.dir}/pvzdValidateXsd"/>
+    <mkdir dir="${artifact.temp.output.pvzdvalidatexsd}"/>
+    <jar destfile="${temp.jar.path.pvzdValidateXsd.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset file="${basedir}/ValidateXSD/META-INF/MANIFEST.MF" prefix="META-INF"/>
+      <zipfileset dir="${validatexsd.output.dir}"/>
+      <zipfileset dir="${basedir}/lib/junit-4.12"/>
+      <zipfileset dir="${basedir}/lib/jhades-1.0.4"/>
+    </jar>
+    <copy file="${temp.jar.path.pvzdValidateXsd.jar}" tofile="${artifact.temp.output.pvzdvalidatexsd}/pvzdValidateXsd.jar"/>
+  </target>
+  
+  <target name="artifact.pvzdverifysig" depends="init.artifacts, compile.module.verifysigapi" description="Build &#39;pvzdVerifySig&#39; artifact">
+    <property name="artifact.temp.output.pvzdverifysig" value="${artifacts.temp.dir}/pvzdVerifySig"/>
+    <mkdir dir="${artifact.temp.output.pvzdverifysig}"/>
+    <jar destfile="${temp.jar.path.pvzdVerifySig.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${verifysigapi.output.dir}"/>
+    </jar>
+    <copy file="${temp.jar.path.pvzdVerifySig.jar}" tofile="${artifact.temp.output.pvzdverifysig}/pvzdVerifySig.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.pvzdvalidatexsd, artifact.pvzdverifysig" description="Build all artifacts">
+    <mkdir dir="${artifact.output.pvzdvalidatexsd}"/>
+    <copy todir="${artifact.output.pvzdvalidatexsd}">
+      <fileset dir="${artifact.temp.output.pvzdvalidatexsd}"/>
+    </copy>
+    <mkdir dir="${artifact.output.pvzdverifysig}"/>
+    <copy todir="${artifact.output.pvzdverifysig}">
+      <fileset dir="${artifact.temp.output.pvzdverifysig}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
