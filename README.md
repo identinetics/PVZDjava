@@ -13,3 +13,7 @@ VerifySigAPI is a wrapper class tp verify an XML signature. It
  currently only implements the XAdES signature validation used by the
  Austrian Citizen Card, using the IAIK MOASP library.
 
+Download
+--------
+
+https://github.com/rhoerbe/PVZDjava/releases

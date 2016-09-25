@@ -7,4 +7,4 @@ https://joinup.ec.europa.eu/asset/moa-idspss/asset_release/moa-id-221
 
 From the unpacked MOA-ID directory copy the moa-spss-lib-x.x.x subdirectory here
 
-Finally, the symlink moa-spss-lib must point to the downlaoded library - check it.
+Finally, the symlink moa-spss-lib must point to the downloaded library - check it.
