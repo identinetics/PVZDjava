@@ -47,17 +47,17 @@ public class XSDValidator {
         final StreamSource[] xsdSources = generateStreamSourcesFromXsdPaths(xsdFiles);
         String retmsg = null;
         if (! new File(xmlFilePath).exists()) {
-            retmsg = "File to be validated not found: " + xmlFilePath;
+            retmsg = "ERROR: File to be validated not found: " + xmlFilePath;
         } else {
             try {
                 final Schema schema = schemaFactory.newSchema(xsdSources);
                 final Validator validator = schema.newValidator();
                 if (_verbose) out.println("Validating " + xmlFilePath + " against XSDs " + Arrays.toString(xsdFiles) + "...");
                 validator.validate(new StreamSource(new File(xmlFilePath)));
-                retmsg = "done.";
+                retmsg = null;
             } catch (IOException e) {
                 if (_verbose) out.println("ERROR: Unable to validate " + xmlFilePath + "\n" + e);
-                retmsg = "File to be validated not be opened: " + xmlFilePath;
+                retmsg = "ERROR: File to be validated not be opened: " + xmlFilePath;
             } catch (SAXException e) {
                 retmsg = "ERROR: Validation of " + xmlFilePath + " failed\n" + e;
                 if (_verbose && retmsg != null) out.println(retmsg);
