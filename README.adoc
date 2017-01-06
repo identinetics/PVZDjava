@@ -16,6 +16,8 @@ Austrian Citizen Card, using the IAIK MOA-SPSS library.
 
 https://github.com/rhoerbe/PVZDjava/releases
 
+Required dependencies: See link:lib/README.adoc[lib/README]
+
 == Build/Publish
 
 Currently artifacts (.jar) are build in the IDE and published manually
