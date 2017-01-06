@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="moa-spss" level="project" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="library" name="moa-spss" level="project" />
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MOASPSS_LIB$/moa-common.jar!/" />
@@ -20,7 +20,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" />
@@ -33,7 +33,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/endorsed" />
@@ -43,7 +43,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../lib/moa-spss-lib/endorsed" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../lib/moa-spss-lib/ext" />
@@ -60,6 +60,28 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/MOA-SPSS-3.0.0/moa-sig-lib-3.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../lib/MOA-SPSS-3.0.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../lib/MOA-SPSS-3.0.0/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../lib/MOA-SPSS-3.0.0/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../lib/MOA-SPSS-3.0.0/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>
